@@ -15,7 +15,7 @@ Backlog
   * DONE [TEST] TerrainPiece objects have a Terrain type (e.g. Grass) and a Coordinate
   * DONE [TEST] Grass implements Terrain
   * DONE [TEST] Coordinate2D implements Coordinate (x(), y(), z() where z() always returns 0 for Coordinate2D)
-  * [TEST] Model needs some default terrain to return for allTerrain() - 3x3 grid of Grass
+  * DONE [TEST] Model needs some default terrain to return for allTerrain() - 3x3 grid of Grass
   * [TEST] Activity implements View and draws TerrainMap
 
 * [FEATURE] User location is shown in view
