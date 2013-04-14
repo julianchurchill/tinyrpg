@@ -1,6 +1,8 @@
 package com.chewielouie.tinyrpg;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+//import static org.junit.Assert.*;
 
 import com.chewielouie.tinyrpg.terrain.TerrainMap;
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class BasicModelTests {
         BasicModel model = new BasicModel();
         TerrainMap terrainMap = model.allTerrain();
 
-        assertNotNull( terrainMap );
+        assertThat( terrainMap, is( notNullValue() ) );
     }
 }
 
