@@ -13,7 +13,7 @@ Backlog
   * DONE [TEST] Model returns all available terrain on allTerrain() as a TerrainMap
   * DONE [TEST] TerrainMap contains TerrainPiece objects which can be accessed with an Enumerator/Iterator
   * DONE [TEST] TerrainPiece objects have a Terrain type (e.g. Grass) and a Coordinate
-  * [TEST] Grass implements Terrain
+  * DONE [TEST] Grass implements Terrain
   * [TEST] 2DCoord implements Coordinate (x(), y(), z() ?? where z() always returns 0 for 2DCoord?)
   * [TEST] Model needs some default terrain to return for allTerrain() - 3x3 grid of Grass
   * [TEST] Activity implements View and draws TerrainMap
