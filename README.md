@@ -10,7 +10,8 @@ Backlog
 
 * [FEATURE] User can see the terrain surrounding them.
   * DONE [TEST] Set up MVP structure. On render presenter tells view of terrain. Presenter.render(), View.showTerrain( TerrainMap ), Model.allTerrain()
-  * [TEST] Model returns all available terrain on allTerrain() as a TerrainMap
+  * DONE [TEST] Model returns all available terrain on allTerrain() as a TerrainMap
+  * [TEST] Add HamCrest matchers so tests can be written like this 'assertThat( model.allTerrain(), isNot( null ) );'
   * [TEST] TerrainMap contains TerrainPiece objects which can be accessed with an Enumerator/Iterator
   * [TEST] TerrainPiece objects have a Terrain type (e.g. Grass) and a Coordinate
   * [TEST] Terrain objects have a type (e.g. Grass) and properties - e.g. unnavigable
