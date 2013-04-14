@@ -25,12 +25,14 @@ public class ArrayTerrainMapTests {
         assertThat( terrainMap.size(), is( 2 ) );
     }
 
-    //@Test
-    //public void terrain_map_can_be_enumerated() {
-        //TerrainMap terrainMap = new ArrayTerrainMap();
+    @Test
+    public void terrain_map_can_be_iterated() {
+        TerrainMap terrainMap = new ArrayTerrainMap();
+        TerrainPiece t1 = mockery.mock( TerrainPiece.class, "piece1" );
+        terrainMap.add( t1 );
 
-        //for( TerrainPiece t : terrainMap )
-            //assertThat( t, instanceof( TerrainPiece ) );
-    //}
+        for( TerrainPiece t : terrainMap )
+            assertThat( t, is( notNullValue() ) );
+    }
 }
 

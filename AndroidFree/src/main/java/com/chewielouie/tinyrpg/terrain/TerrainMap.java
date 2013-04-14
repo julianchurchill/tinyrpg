@@ -1,6 +1,8 @@
 package com.chewielouie.tinyrpg.terrain;
 
-public interface TerrainMap {
+import java.util.Iterator;
+
+public interface TerrainMap extends Iterable<TerrainPiece> {
     public int size();
     public void add( TerrainPiece p );
 }
