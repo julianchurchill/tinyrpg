@@ -1,6 +1,6 @@
 package com.chewielouie.tinyrpg;
 
-public class TinyRPGPresenter {
+public class TinyRPGPresenter implements RendersView {
     TinyRPGView view;
     TinyRPGModel model;
 
