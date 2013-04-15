@@ -35,6 +35,7 @@ Backlog
 * [FEATURE] Action buttons at the bottom of screen to act on targetted element, e.g. shoot, give
 * [FEATURE] NPCs
 * [FEATURE] Second click after targetting talks to NPCs
+* [FEATURE] Auto-save/load onPause/onResume
 
 Done
 ====
