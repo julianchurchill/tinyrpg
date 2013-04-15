@@ -19,8 +19,22 @@ Backlog
   * [TEST] Activity implements View and draws TerrainMap
 
 * [FEATURE] User location is shown in view
-* [FEATURE] User can move around world
-* [FEATURE] Implement new Terrain type Rock as unpassable/unnavigable
+* [FEATURE] User can move around world with 8-way compass for navigation, big enough to be usable, small enough to not obscure view
+* [FEATURE] New Terrain type Rock as unpassable/unnavigable
+* [FEATURE] Sideways view of game, best for including overlays and button for control
+* [FEATURE] Items - can see items in nearby locations
+* [FEATURE] Click to target on screen elements, second click does default action - pick up for items
+* [FEATURE] Help button '?' - when pressed you can touch onscreen objects to get a hint about them, e.g. compass - used for navigation, healing spring - stand in to regenerate health
+* [FEATURE] Character stats screen, health, money
+* [FEATURE] Inventory button, view held items and details, drop/destroy items
+* [FEATURE] Monsters
+* [FEATURE] Second click after targetting attacks monsters
+* [FEATURE] Armour/weapons button - see what you are wearing/wielding and swap with items in your inventory
+* [FEATURE] New Terrain type Fire hurts when standing in it
+* [FEATURE] New Terrain type Healing Spring heals when standing in it
+* [FEATURE] Action buttons at the bottom of screen to act on targetted element, e.g. shoot, give
+* [FEATURE] NPCs
+* [FEATURE] Second click after targetting talks to NPCs
 
 Done
 ====
