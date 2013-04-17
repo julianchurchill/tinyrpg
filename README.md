@@ -8,8 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-* ?? WorldView canvas size for emulator seems to be 480x800 which is _full_ screen! This can't be can it? It makes the terrain look off center. It is center horizontally ok, but vertically it looks way off.
-
 * [FEATURE] User location is shown in view
 * [FEATURE] User can move around world with 8-way compass for navigation, big enough to be usable, small enough to not obscure view. User is bounded by edges of the world.
 * [FEATURE] New Terrain type Rock as unpassable/unnavigable

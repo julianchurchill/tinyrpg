@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import com.chewielouie.tinyrpg.terrain.TerrainMap;
 import com.chewielouie.tinyrpg.terrain.Grass;
@@ -28,7 +27,6 @@ public class WorldView extends View {
 
     protected void onDraw( Canvas c ) {
         this.canvas = c;
-        Log.v( "WorldView", "onDraw canvas size is " + c.getWidth() + " x " + c.getHeight() );
         drawTerrain();
     }
 
@@ -42,10 +40,9 @@ public class WorldView extends View {
 
     private void drawGrass( Coordinate coord ) {
         CoordinateConverter c = new CoordinateConverter();
-        c.setViewSize( canvas.getWidth(), canvas.getHeight() );
+        c.setViewSize( getWidth(), getHeight() );
         c.setViewUnitSize( tileWidth(), tileHeight() );
         Coordinate viewCoord = c.convertWorldToView( coord );
-        Log.v( "WorldView", "Drawing tile at " + viewCoord.x() + "," + viewCoord.y() );
         fillTile( viewCoord, Color.GREEN );
         highlightTile( viewCoord );
     }
