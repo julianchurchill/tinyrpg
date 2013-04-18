@@ -5,6 +5,11 @@ A tiny RPG initially for Android. This is another exercise in TDD in an Android 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
+To list all virtual devices                             - 'android list avd'
+Pick a virtual device by name and run in the emulator   - 'emulator @<name>' , e.g. 'emulator @emu-htc-desire-s'
+To run the logging                                      - 'adb logcat'
+To get a shell on the emu                               - 'adb shell'
+
 Backlog
 =======
 
