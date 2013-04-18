@@ -48,5 +48,17 @@ public class TinyRPGPresenterTests {
 
         p.render();
     }
+
+    @Test
+    public void on_player_movement_attempted_model_is_informed() {
+        final TinyRPGModel model = mockery.mock( TinyRPGModel.class );
+        TinyRPGPresenter p = new TinyRPGPresenter( null, model );
+
+        mockery.checking( new Expectations() {{
+            oneOf( model ).tryToMovePlayer( TinyRPGModel.Direction.North );
+        }});
+
+        p.playerMovementAttempted( TinyRPGModel.Direction.North );
+    }
 }
 

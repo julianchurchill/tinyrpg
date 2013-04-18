@@ -13,5 +13,9 @@ public class TinyRPGPresenter implements RendersView {
         view.showTerrain( model.allTerrain() );
         view.showPlayerAt( model.playerPosition() ) ;
     }
+
+    public void playerMovementAttempted( TinyRPGModel.Direction d ) {
+        model.tryToMovePlayer( d );
+    }
 }
 

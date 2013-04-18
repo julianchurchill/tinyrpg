@@ -20,5 +20,10 @@ public class Coordinate2D implements Coordinate {
     public int z() {
         return 0;
     }
+
+    public void translate( Coordinate delta ) {
+        x = x + delta.x();
+        y = y + delta.y();
+    }
 }
 

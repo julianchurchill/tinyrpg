@@ -31,5 +31,26 @@ public class Coordinate2DTests {
         Coordinate coord = new Coordinate2D( 2, 3 );
         assertThat( coord.z(), is( 0 ) );
     }
+
+    @Test
+    public void translate_x_changes_x_by_supplied_delta() {
+        Coordinate coord = new Coordinate2D( 3, 0 );
+        coord.translate( new Coordinate2D( 2, 0 ) );
+        assertThat( coord.x(), is( 5 ) );
+    }
+
+    @Test
+    public void translate_y_changes_y_by_supplied_delta() {
+        Coordinate coord = new Coordinate2D( 0, 3 );
+        coord.translate( new Coordinate2D( 0, 2 ) );
+        assertThat( coord.y(), is( 5 ) );
+    }
+
+    @Test
+    public void translate_has_no_affect_on_z() {
+        Coordinate coord = new Coordinate2D( 0, 3 );
+        coord.translate( new Coordinate2D( 2, 2 ) );
+        assertThat( coord.z(), is( 0 ) );
+    }
 }
 
