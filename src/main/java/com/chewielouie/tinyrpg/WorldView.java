@@ -10,9 +10,11 @@ import com.chewielouie.tinyrpg.terrain.TerrainMap;
 import com.chewielouie.tinyrpg.terrain.Grass;
 import com.chewielouie.tinyrpg.terrain.TerrainPiece;
 
-public class WorldView extends View {
-    private Context context;
+public class WorldView extends View implements TinyRPGView {
+    private Coordinate playerCoord = null;
     private TerrainMap terrainMap;
+    private CoordinateConverter coordinateConverter;
+    private Context context;
     private Canvas canvas;
 
     public WorldView( Context context, AttributeSet attrs ) {
@@ -20,14 +22,26 @@ public class WorldView extends View {
         this.context = context;
     }
 
-    public void setTerrain( TerrainMap map ) {
+    @Override
+    public void showPlayerAt( Coordinate pos ) {
+        this.playerCoord = pos;
+        invalidate();
+    }
+
+    @Override
+    public void showTerrain( TerrainMap map ) {
         this.terrainMap = map;
         invalidate();
     }
 
     protected void onDraw( Canvas c ) {
         this.canvas = c;
+        coordinateConverter = new CoordinateConverter();
+        coordinateConverter.setViewSize( getWidth(), getHeight() );
+        coordinateConverter.setViewUnitSize( tileWidth(), tileHeight() );
+        coordinateConverter.centerViewOnWorldCoord( playerCoord );
         drawTerrain();
+        drawPlayer();
     }
 
     private void drawTerrain() {
@@ -39,12 +53,13 @@ public class WorldView extends View {
     }
 
     private void drawGrass( Coordinate coord ) {
-        CoordinateConverter c = new CoordinateConverter();
-        c.setViewSize( getWidth(), getHeight() );
-        c.setViewUnitSize( tileWidth(), tileHeight() );
-        Coordinate viewCoord = c.convertWorldToView( coord );
+        Coordinate viewCoord = coordinateConverter().convertWorldToView( coord );
         fillTile( viewCoord, Color.GREEN );
         highlightTile( viewCoord );
+    }
+
+    private CoordinateConverter coordinateConverter() {
+        return coordinateConverter;
     }
 
     private int tileWidth() {
@@ -72,6 +87,27 @@ public class WorldView extends View {
         paint.setStyle( Paint.Style.STROKE );
         paint.setColor( Color.RED );
         drawTile( coord, paint );
+    }
+
+    private void drawPlayer() {
+        Coordinate viewCoord = coordinateConverter().convertWorldToView( playerCoord );
+        Paint paint = new Paint();
+        paint.setStyle( Paint.Style.FILL );
+        paint.setColor( Color.BLUE );
+        canvas.drawCircle( centerOfTileX( viewCoord ), centerOfTileY( viewCoord ),
+                playerRadius(), paint );
+    }
+
+    private int centerOfTileX( Coordinate c ) {
+        return c.x() + tileWidth() / 2;
+    }
+
+    private int centerOfTileY( Coordinate c ) {
+        return c.y() + tileHeight() / 2;
+    }
+
+    private int playerRadius() {
+        return tileWidth() / 3;
     }
 }
 

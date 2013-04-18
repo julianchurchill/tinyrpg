@@ -8,7 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-* [FEATURE] User location is shown in view
 * [FEATURE] User can move around world with 8-way compass for navigation, big enough to be usable, small enough to not obscure view. User is bounded by edges of the world.
 * [FEATURE] New Terrain type Rock as unpassable/unnavigable
 * [FEATURE] Sideways view of game, best for including overlays and button for control
@@ -33,5 +32,6 @@ Done
 1.0
 ---
 
+* [FEATURE] User location is shown in view
 * [FEATURE] User can see the terrain surrounding them.
 

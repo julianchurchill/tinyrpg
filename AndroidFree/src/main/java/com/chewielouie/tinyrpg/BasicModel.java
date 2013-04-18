@@ -6,9 +6,11 @@ import com.chewielouie.tinyrpg.terrain.LocatedTerrainPiece;
 import com.chewielouie.tinyrpg.terrain.TerrainMap;
 
 public class BasicModel implements TinyRPGModel {
+    private Coordinate playerPosition;
     private TerrainMap terrainMap;
 
     public BasicModel() {
+        this.playerPosition = new Coordinate2D( 1, 1 );
         populateTerrain();
     }
 
@@ -27,6 +29,10 @@ public class BasicModel implements TinyRPGModel {
 
     public TerrainMap allTerrain() {
         return terrainMap;
+    }
+
+    public Coordinate playerPosition() {
+        return playerPosition;
     }
 }
 

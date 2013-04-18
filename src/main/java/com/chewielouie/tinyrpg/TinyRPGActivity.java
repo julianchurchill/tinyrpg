@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.chewielouie.tinyrpg.terrain.TerrainMap;
 
-public class TinyRPGActivity extends Activity implements TinyRPGView {
-    private RendersView rendersView;
+public class TinyRPGActivity extends Activity {
+    private RendersView rendersView = null;
 
     public TinyRPGActivity() {
-        TinyRPGPresenter presenter = new TinyRPGPresenter( this, new BasicModel() );
-        this.rendersView = presenter;
     }
 
     public TinyRPGActivity( RendersView v ) {
@@ -22,6 +20,19 @@ public class TinyRPGActivity extends Activity implements TinyRPGView {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        createPresenter();
+    }
+
+    private void createPresenter() {
+        if( rendersView == null ) {
+            TinyRPGPresenter presenter = new TinyRPGPresenter( worldView(), new BasicModel() );
+            rendersView = presenter;
+        }
+    }
+
+    private WorldView worldView() {
+       return (WorldView)findViewById( R.id.world_view );
     }
 
     @Override
@@ -29,12 +40,6 @@ public class TinyRPGActivity extends Activity implements TinyRPGView {
         super.onResume();
 
         rendersView.render();
-    }
-
-    @Override
-    public void showTerrain( TerrainMap map ) {
-        WorldView worldView = (WorldView)findViewById( R.id.world_view );
-        worldView.setTerrain( map );
     }
 }
 

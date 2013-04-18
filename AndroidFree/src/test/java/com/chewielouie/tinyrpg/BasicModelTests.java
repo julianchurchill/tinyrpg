@@ -16,5 +16,12 @@ public class BasicModelTests {
 
         assertThat( terrainMap, is( notNullValue() ) );
     }
+
+    @Test
+    public void model_has_a_default_player_position() {
+        BasicModel model = new BasicModel();
+        assertThat( model.playerPosition().x(), is( 1 ) );
+        assertThat( model.playerPosition().y(), is( 1 ) );
+    }
 }
 

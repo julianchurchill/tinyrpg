@@ -30,5 +30,23 @@ public class TinyRPGPresenterTests {
 
         p.render();
     }
+
+    @Test
+    public void render_tells_view_about_player_position() {
+        final TinyRPGView view = mockery.mock( TinyRPGView.class );
+        final TinyRPGModel model = mockery.mock( TinyRPGModel.class );
+        TinyRPGPresenter p = new TinyRPGPresenter( view, model );
+        final Coordinate playerCoord = mockery.mock( Coordinate.class );
+
+        mockery.checking( new Expectations() {{
+            allowing( model ).playerPosition();
+            will( returnValue( playerCoord ) );
+            ignoring( model );
+            oneOf( view ).showPlayerAt( playerCoord );
+            ignoring( view );
+        }});
+
+        p.render();
+    }
 }
 

@@ -4,6 +4,7 @@ import com.chewielouie.tinyrpg.terrain.TerrainMap;
 
 public interface TinyRPGModel {
     public TerrainMap allTerrain();
+    public Coordinate playerPosition();
 }
 
 
