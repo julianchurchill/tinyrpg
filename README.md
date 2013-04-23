@@ -28,13 +28,15 @@ Backlog
   * DONE [TEST] On user action of move(direction) presenter calls model
   * DONE [TEST] On successful user movement BasicModel calls listeners
   * DONE [TEST] BasicModel implements 8 directions of movement, updating player position appropriately
-  * [TEST] BasicModel does not change player position if they attempt to leave the map
-  * [TEST] BasicModel does not notify listeners of changed player position if they attempt to leave the map
+  * DONE [TEST] BasicModel does not change player position if they attempt to leave the map
+  * DONE [TEST] BasicModel does not notify listeners of changed player position if they attempt to leave the map
+  * [TEST] Coordinates should be comparable. Implement equals. Use it in BasicModel::terrainIsNavigable().
   * [TEST] Presenter listens to Model for user movement and tells view of new player position
   * [TEST] When user touches compass, WorldView converts to user movement action and calls UserActionHandler interface
   * [TEST] Presenter implements UserActionHandler interface
   * [TEST] Activity connects WorldView to presenter as the UserActionHandler
 
+* [PERFORMANCE] BasicModel::terrainIsNavigable() iterates over all terrain to find a piece at a particular coordinate. Should TerrainMap provide a method to find a TerrainPiece by Coordinate, which could then be implemented as a more efficient hash?
 * [FEATURE] New Terrain type Rock as unpassable/unnavigable
 * [FEATURE] Sideways view of game, best for including overlays and button for control
 * [FEATURE] Items - can see items in nearby locations

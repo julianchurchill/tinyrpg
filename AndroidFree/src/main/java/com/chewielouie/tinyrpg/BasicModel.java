@@ -4,6 +4,7 @@ import com.chewielouie.tinyrpg.terrain.ArrayTerrainMap;
 import com.chewielouie.tinyrpg.terrain.Grass;
 import com.chewielouie.tinyrpg.terrain.LocatedTerrainPiece;
 import com.chewielouie.tinyrpg.terrain.TerrainMap;
+import com.chewielouie.tinyrpg.terrain.TerrainPiece;
 
 public class BasicModel implements TinyRPGModel {
     private Coordinate playerPosition;
@@ -36,6 +37,10 @@ public class BasicModel implements TinyRPGModel {
         return playerPosition;
     }
 
+    public void setPlayerPosition( Coordinate coord ) {
+        playerPosition = coord;
+    }
+
     public void setTerrainMap( TerrainMap map ) {
         terrainMap = map;
     }
@@ -44,26 +49,43 @@ public class BasicModel implements TinyRPGModel {
         playerActivityListener = l;
     }
 
-    public void tryToMovePlayer( Direction d ) {
-        if( d == Direction.North )
-            playerPosition.translate( new Coordinate2D(  0, -1 ) );
-        else if( d == Direction.South )
-            playerPosition.translate( new Coordinate2D(  0,  1 ) );
-        else if( d == Direction.East )
-            playerPosition.translate( new Coordinate2D(  1,  0 ) );
-        else if( d == Direction.West )
-            playerPosition.translate( new Coordinate2D( -1,  0 ) );
-        else if( d == Direction.NorthEast )
-            playerPosition.translate( new Coordinate2D(  1, -1 ) );
-        else if( d == Direction.NorthWest )
-            playerPosition.translate( new Coordinate2D( -1, -1 ) );
-        else if( d == Direction.SouthEast )
-            playerPosition.translate( new Coordinate2D(  1,  1 ) );
-        else if( d == Direction.SouthWest )
-            playerPosition.translate( new Coordinate2D( -1,  1 ) );
+    private boolean terrainIsNavigable( Coordinate coord ) {
+        for( TerrainPiece p : allTerrain() )
+            if( p.coordinate().x() == coord.x() &&
+                p.coordinate().y() == coord.y() )
+                return true;
+        return false;
+    }
 
-        if( playerActivityListener != null )
-            playerActivityListener.playerPositionChanged();
+    public void tryToMovePlayer( Direction d ) {
+        Coordinate newPlayerPosition = new Coordinate2D( playerPosition.x(),
+                                                         playerPosition.y() );
+        newPlayerPosition.translate( directionDelta( d ) );
+        if( terrainIsNavigable( newPlayerPosition ) ) {
+            playerPosition = newPlayerPosition;
+            if( playerActivityListener != null )
+                playerActivityListener.playerPositionChanged();
+        }
+    }
+
+    public Coordinate directionDelta( Direction d ) {
+        if( d == Direction.North )
+            return new Coordinate2D(  0, -1 );
+        else if( d == Direction.South )
+            return new Coordinate2D(  0,  1 );
+        else if( d == Direction.East )
+            return new Coordinate2D(  1,  0 );
+        else if( d == Direction.West )
+            return new Coordinate2D( -1,  0 );
+        else if( d == Direction.NorthEast )
+            return new Coordinate2D(  1, -1 );
+        else if( d == Direction.NorthWest )
+            return new Coordinate2D( -1, -1 );
+        else if( d == Direction.SouthEast )
+            return new Coordinate2D(  1,  1 );
+        else if( d == Direction.SouthWest )
+            return new Coordinate2D( -1,  1 );
+        return null;
     }
 }
 
